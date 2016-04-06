@@ -62,10 +62,13 @@ if (isset($_GET["action"]) && in_array($_GET["action"], $possible_url))
 
 // kamal
 
+
 function mhs($nama,$nim)
 {
 	//normallythis into would be pulled from a database
 	//build JSON array
+	$nama = $_POST["nama"];
+	$nim = $_POST["nim"];
 	$app_list ="Hello, Selamat Datang" . $nama . "NIM Anda".$nim;
 
 	return $app_list;
@@ -77,7 +80,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 	//$au = $_SERVER['PHP_AUTH_USER'];
 	$json = file_get_contents('php://input');
 	$obj = json_decode($json);
-	$value =  "berhasil diinput ". $obj->{'nama'};
+	$value = mhs ($_POST["nama"] , $_POST["nim"]);
+
 }
 
 if($_SERVER['REQUEST_METHOD'] == "PUT"){
@@ -85,7 +89,7 @@ if($_SERVER['REQUEST_METHOD'] == "PUT"){
 	$obj = json_decode($json);	
 	$id= $_SERVER['HTTP_ID'];
 	
-	$value = "berhasil diupdate ".$id." ".$obj->{'nama'};
+	$value = mhs ($_GET["nama"],$_GET["nim"]);
 }
 
 if($_SERVER['REQUEST_METHOD'] == "DELETE"){
