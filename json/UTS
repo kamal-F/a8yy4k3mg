@@ -1,0 +1,22 @@
+Cara pakai di terminal (menggunakan curl)
+
+[soal uts]
+curl -i -H "Accept:application/json" -H "Content-Type:application/json" -XPOST "http://localhost/latihan/utswebservice/server/serverrest.php/" -d '{"nama": "Budi Suseno","nim":"32323"}'
+	output: "Hello, selamat datang Budi Suseno, nim Anda 32323" 
+[alternatif]
+curl -i -H "Accept:application/json" -H "application/x-www-form-urlencoded" -d "nama=budi&nim=22111" -XPOST "http://localhost/latihan/utswebservice/server/serverrest.php"
+	output: "Hey, selamat datang budi, nim Anda 22111"
+
+curl -i -H "Accept:application/json" -H "Content-Type:application/json" -XGET "http://localhost/latihan/utswebservice/server/serverrest.php?operation=tambah&prm1=28&prm2=10"
+	output: 38
+
+[alternatif]
+curl -i -H "Accept:application/json" -H "application/x-www-form-urlencoded" -d "operation=tambah&prm1=10&prm2=20" -XPOST "http://localhost/latihan/utswebservice/server/serverrest.php"
+	output: 30
+
+curl -i -H "Accept:application/json" -H "Content-Type:application/json" -XGET "http://localhost/latihan/utswebservice/server/serverrest.php?operation=kurang&prm1=28&prm2=10"
+	output: 18
+
+[alternatif]
+curl -i -H "Accept:application/json" -H "application/x-www-form-urlencoded" -d "operation=kurang&prm1=10&prm2=20" -XPOST "http://localhost/latihan/utswebservice/server/serverrest.php"
+	output: -10 
