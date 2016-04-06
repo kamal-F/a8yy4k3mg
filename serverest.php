@@ -67,8 +67,7 @@ function mhs($nama,$nim)
 {
 	//normallythis into would be pulled from a database
 	//build JSON array
-	$nama = $_POST["nama"];
-	$nim = $_POST["nim"];
+	
 	$app_list ="Hello, Selamat Datang " . $nama . " NIM Anda " .$nim;
 
 	return $app_list;
@@ -81,6 +80,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 	//$au = $_SERVER['PHP_AUTH_USER'];
 	$json = file_get_contents('php://input');
 	$obj = json_decode($json);
+$nama = $_POST["nama"];
+	$nim = $_POST["nim"];
 	$value = mhs ($_POST["nama"], $_POST["nim"]);
 }
 
