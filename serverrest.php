@@ -7,18 +7,11 @@ function mhs($nama,$nim)
 {
   // normally this info would be pulled from a database.
   // build JSON array.
+  $nama = $_POST['nama'];
+  $nim = $_POST['nim'];
   $app_list = "Hello, selamat datang ".$nama." nim Anda".$nim;
 
   return $app_list;
-}
-
-function hitung($prm1,$prm2)
-{
-  // normally this info would be pulled from a database.
-  // build JSON array.
-  $hitung = $prm1+$prm2;
-
-  return $hitung;
 }
 
 /* function get_app_by_id($id)
@@ -54,7 +47,7 @@ function get_app_list()
   return $app_list;
 }
 */
-$possible_url = array("get_app_list", "get_app", "mhs", "hitung");
+$possible_url = array("get_app_list", "get_app", "mhs");
 
 $value = "An error has occurred";
 
@@ -73,11 +66,7 @@ if (isset($_GET["action"]) && in_array($_GET["action"], $possible_url))
         break;
       case "mhs":
         if (isset($_GET["nama"]) && ($_GET["nim"]))
-          $value = mhs($_GET["nama"],$_GET["nim"]);
-        break;
-       case "hitung":
-        if (isset($_GET["prm1"]) && ($_GET["prm2"]))
-          $value = hitung($_GET["prm1"],$_GET["prm2"]);
+          $value = mhs($_GET["nama"], $_GET["nim"]);
         break;
     }
 }
@@ -90,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 	//$au = $_SERVER['PHP_AUTH_USER'];
 	$json = file_get_contents('php://input');
 	$obj = json_decode($json);
-	$value =  "berhasil diinput ". $obj->{'nama'};
+	 $value = mhs($_GET["nama"],$_GET["nim"]);
 }
 
 if($_SERVER['REQUEST_METHOD'] == "PUT"){
@@ -98,8 +87,10 @@ if($_SERVER['REQUEST_METHOD'] == "PUT"){
 	$obj = json_decode($json);	
 	$id= $_SERVER['HTTP_ID'];
 	
-	$value = "berhasil diupdate ".$id." ".$obj->{'nama'};
-}
+	//$value = "berhasil diupdate ".$id." ".$obj->{'nama'};
+$value = mhs($_GET["nama"],$_GET["nim"]);
+}	
+
 
 if($_SERVER['REQUEST_METHOD'] == "DELETE"){
 	$id= $_SERVER['HTTP_ID'];	
