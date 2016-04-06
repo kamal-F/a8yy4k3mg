@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/uts/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="uts" targetNamespace="http://www.example.org/uts/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/uts/">
+      <xsd:element name="getInfoMKtype">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="PPKN" type="xsd:string"></xsd:element>
+      			<xsd:element name="Bahasa_Indonesia" type="xsd:string"></xsd:element>
+      			<xsd:element name="Tataboga" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="getInfoMKRequest">
+    </wsdl:message>
+    <wsdl:message name="getInfoMKResponse">
+    	<wsdl:part name="getInfoMKResponse" element="tns:getInfoMKtype"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="uts">
+    <wsdl:operation name="getInfoMK">
+    	<wsdl:input message="tns:getInfoMKRequest"></wsdl:input>
+    	<wsdl:output message="tns:getInfoMKResponse"></wsdl:output>
+    </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="utsSOAP" type="tns:uts">
+    	<soap:binding style="document"
+    		transport="http://schemas.xmlsoap.org/soap/http" />
+    	<wsdl:operation name="getInfoMK">
+    		<soap:operation
+    			soapAction="http://www.example.org/uts/getInfoMK" />
+    		<wsdl:input>
+    			<soap:body use="literal" />
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal" />
+    		</wsdl:output>
+    	</wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="uts">
+    <wsdl:port binding="tns:utsSOAP" name="utsSOAP">
+      <soap:address location="http://localhost/utswebservice/server.php"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
