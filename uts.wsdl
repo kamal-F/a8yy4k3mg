@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="uts" targetNamespace="http://www.example.org/uts/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/uts/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
-
     <wsdl:types><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/uts/">
 	<xsd:element name="getInfoMK">
 		<xsd:complexType>
