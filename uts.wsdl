@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="uts" targetNamespace="http://www.example.org/uts/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/uts/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+
+    <wsdl:types><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/uts/">
+	<xsd:element name="getInfoMK">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element name="MK" type="xsd:string"></xsd:element>
+				<xsd:element name="SKS" type="xsd:string"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="getInfoMKResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element name="out" type="xsd:string"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element><xsd:element name="NewElement" type="xsd:string"></xsd:element></xsd:schema></wsdl:types>
+    <wsdl:message name="getInfoMKRequest">
+    	<wsdl:part name="parameters" element="tns:getInfoMK"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getInfoMKResponse">
+    	<wsdl:part name="parameters" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="uts">
+    	<wsdl:operation name="getInfoMK">
+    		<wsdl:input message="tns:getInfoMKRequest"></wsdl:input>
+    		<wsdl:output message="tns:getInfoMKResponse"></wsdl:output>
+    	</wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="utsSOAP" type="tns:uts"></wsdl:binding>
+    <wsdl:service name="uts">
+		<wsdl:port name="utsSOAP" binding="tns:utsSOAP">
+			<soap:address location="http://localhost/latihan/utswebserver/server/server.php" />
+		</wsdl:port>
+
+    </wsdl:service></wsdl:definitions>
