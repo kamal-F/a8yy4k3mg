@@ -36,7 +36,7 @@ function get_app_list()
   return $app_list;
 }
 
-$possible_url = array("get_app_list", "get_app","get_umur","get_status","mhs");
+$possible_url = array("get_app_list", "get_app","get_umur","get_status","mhs", "tambah", "kurang");
 
 $value = "An error has occurred";
 
@@ -57,6 +57,14 @@ if (isset($_GET["action"]) && in_array($_GET["action"], $possible_url))
       	if (isset($_GET["nama"]) && ($_GET["nim"]))
       		$value = mhs ($_GET["nama"],$_GET["nim"]);
       	break;
+case "tambah";
+      	if (isset($_GET["angka1"]) && ($_GET["angka2"]))
+      		$value = tambah ($_GET["angka1"],$_GET["angka2"]);
+      	break;
+case "kurang";
+      	if (isset($_GET["angka1"]) && ($_GET["angka2"]))
+      		$value = kurang ($_GET["angka1"],$_GET["angka2"]);
+      	break;
     }
 }
 
@@ -73,6 +81,28 @@ function mhs($nama,$nim)
 	return $app_list;
 }
 
+function tambah($angka1,$angka2)
+{
+	//normallythis into would be pulled from a database
+	//build JSON array
+	
+	$app_list =$angka1 + $angka2;
+
+	return $app_list;
+}
+
+function kurang($angka1,$angka2)
+{
+	//normallythis into would be pulled from a database
+	//build JSON array
+	
+	$app_list =$angka1 - $angka2;
+
+	return $app_list;
+}
+
+
+
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 	// TODO: gunakan authentication 
@@ -83,6 +113,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 $nama = $_POST["nama"];
 	$nim = $_POST["nim"];
 	$value = mhs ($_POST["nama"], $_POST["nim"]);
+	$angka1 = $_POST["angka1"];
+	$angka2 = $_POST["angka2"];
+	$value = tambah ($_POST["angka1"], $_POST["angka2"]);
+	$value = kurang ($_POST["angka1"], $_POST["angka2"]);
 }
 
 if($_SERVER['REQUEST_METHOD'] == "PUT"){
