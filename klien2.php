@@ -3,8 +3,8 @@ $wsdl = "http://localhost/latihan/utswebservice/server/uts.wsdl";
 $client2 = new SoapClient ( $wsdl );
 
 $ws = $client2->getInfoMK ();
-$wsout = $ws->MK;
-
+$wsout = $ws->PPKN;
+var_dump($wsdl);
 echo '<p>';
 echo 'List mata kuliah';
 echo '</p>';
