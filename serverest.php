@@ -62,22 +62,26 @@ if (isset($_GET["action"]) && in_array($_GET["action"], $possible_url))
 
 // kamal
 
+
 function mhs($nama,$nim)
 {
 	//normallythis into would be pulled from a database
 	//build JSON array
-	$app_list ="Hello, Selamat Datang" . $nama . "NIM Anda".$nim;
+	$nama = $_POST["nama"];
+	$nim = $_POST["nim"];
+	$app_list ="Hello, Selamat Datang " . $nama . " NIM Anda " .$nim;
 
 	return $app_list;
 }
 
+
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 	// TODO: gunakan authentication 
-	//curl -i  -H "Accept:application/json" -H "Content-Type:application/json" -XPOST "http://localhost/latihan/wsphpserver/api.php/" -d '{"kode": "x2", "nama": "termos","deskripsi":"barang bagus","id_kantor":"10"}'
+	//curl -i  -H "Accept:application/json" -H "Content-Type:application/json" -XPOST "http://localhost/latihan/a8yy4k3mg/serverest.php/" -d '{"nama": "Hasan","nim":"1144062"}'
 	//$au = $_SERVER['PHP_AUTH_USER'];
 	$json = file_get_contents('php://input');
 	$obj = json_decode($json);
-	$value =  "berhasil diinput ". $obj->{'nama'};
+	$value = mhs ($_POST["nama"], $_POST["nim"]);
 }
 
 if($_SERVER['REQUEST_METHOD'] == "PUT"){
